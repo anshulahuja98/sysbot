@@ -85,7 +85,7 @@ class TestMainServer(unittest.TestCase):
             response_coveralls_comment = self.client.post('/web_hook', data=json.dumps(event_data_comment),
                                                           content_type='application/json')
             self.assertEqual(response_coveralls_comment.data, '{\n  "message": "Coveralls comment"\n}\n')
-            event_data_comment['comment']['body']= "@sys-bot approve"
+            event_data_comment['comment']['body'] = "@sys-bot approve"
             response_approve = self.client.post('/web_hook', data=json.dumps(event_data_comment),
                                                 content_type='application/json')
             self.assertEqual(response_approve.data, '{\n  "message": "Approve command"\n}\n')

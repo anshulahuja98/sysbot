@@ -5,7 +5,7 @@ from code.github_functions import (check_approved_tag, label_opened_issue, send_
                                    issue_claim_github, check_multiple_issue_claim,
                                    get_issue_author, unassign_issue, check_issue_template,
                                    close_pr, are_issue_essential_components_present,
-                                   list_open_prs_from_repo, open_issue_github, check_pr_template,
+                                   open_issue_github, check_pr_template,
                                    label_list_issue, fetch_issue_body, pr_reviewed_label)
 from code.messages import MESSAGE
 from setup_data import (correct_issue_data, wrong_issue_data, missing_params_issue_data,
@@ -137,7 +137,9 @@ class TestGithubFunctions(unittest.TestCase):
                                                         'systers', 'sysbot-testing', '12')
         self.assertEqual(response_no_fixes_statement, False)
         response_text_fixes_statement = check_pr_template(pr_template_with_fixes_text %
-                                                          ("Description", "Type of Change", "Tested", "Checklist Point"),
+                                                          (
+                                                              "Description", "Type of Change", "Tested",
+                                                              "Checklist Point"),
                                                           'systers', 'sysbot-testing', '12')
         self.assertEqual(response_text_fixes_statement, False)
         response_wrong_template = check_pr_template("Test test",

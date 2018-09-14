@@ -52,7 +52,7 @@ class TestSlackFunctions(unittest.TestCase):
     def test_slack_team_name_reply(self):
         response_wrong_channel = slack_team_name_reply(new_user_data)
         self.assertEqual(response_wrong_channel, {'message': 'Team does not exist in records.'})
-        new_user_data["event"]["channel"]="CAEDCBACW"
+        new_user_data["event"]["channel"] = "CAEDCBACW"
         response_not_classified = slack_team_name_reply(new_user_data)
         self.assertEqual(response_not_classified, {'message': 'Not classified query'})
         new_user_data["event"]["channel"] = "CAP9GA5MJ"
@@ -77,7 +77,7 @@ class TestSlackFunctions(unittest.TestCase):
         self.assertEqual(response_wrong_params, {"message": "Wrong parameters for for approval command"})
 
     def test_assign_issue_slack(self):
-        slash_command_assign_issue_data["text"]="sysbot-test 150 sammy1997"
+        slash_command_assign_issue_data["text"] = "sysbot-test 150 sammy1997"
         response_assign_claimed = assign_issue_slack(slash_command_assign_issue_data)
         self.assertEqual(response_assign_claimed, {"message": "Issue already claimed"})
         slash_command_assign_issue_data["text"] = "sysbot-test 152 sammy1997"
