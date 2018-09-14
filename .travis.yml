@@ -11,6 +11,7 @@ before_script:
 script:
   - ./testing.sh
   - flake8 code
+  - flake8 tests
 notifications:
   email:
     - sombuddha2016@gmail.com
